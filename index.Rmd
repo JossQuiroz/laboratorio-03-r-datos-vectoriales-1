@@ -146,14 +146,23 @@ kable_styling()
 ### Ejercicio 6 (25%)
 Con la función ```ggplot()``` del paquete [ggplot2](https://ggplot2.tidyverse.org/), genere un gráfico de barras que muestre la esperanza de vida de los siete países de Centroamérica. El gráfico debe tener un título, los nombres (o códigos) de los países bajo cada barra, los valores sobre las barras y etiquetas para los ejes x e y.
 ```{r}
+ggplot(centro_america, aes(x=reorder(name_long, -lifeExp), y=lifeExp)) +
+  ggtitle("Datos demograficos de paises de Centroamerica") +
+  xlab("País") + 
+  ylab("Esperanza de Vida") +  
+  geom_col() +
+  geom_text(aes(label=lifeExp), vjust=-0.3, size=3.5)
 ```
 
 ### Ejercicio 7 (25%)
 Con la función ```plot()``` del paquete [sf](https://cran.r-project.org/web/packages/sf/index.html), genere un [mapa de coropletas](https://en.wikipedia.org/wiki/Choropleth_map) con colores que reflejen la esperanza de vida de los siete países de Centroamérica. El mapa debe llevar un título.
 ```{r}
+plot(centro_america["lifeExp"], main="Datos demograficos de paises de Centroamerica")
 ```
 
 ### Ejercicio 8 (25%)
 Extraiga en un nuevo data frame los países de Centroamérica con esperanza de vida mayor o igual a 74 años y genere el mapa de coropletas, con su título correspondiente.
 ```{r}
+centro_america_lifeExp <- centro_america[centro_america$lifeExp >= 74,]
+plot(centro_america_lifeExp["lifeExp"], main="Esperanza de Vida igual o mayor 74 años en Centroamerica")
 ```
