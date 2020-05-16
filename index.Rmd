@@ -152,7 +152,7 @@ ggplot(centro_america, aes(x=reorder(name_long, -lifeExp), y=lifeExp)) +
   ylab("Esperanza de Vida") +  
   geom_col() +
   geom_text(aes(label=lifeExp), vjust=-0.3, size=3.3) + 
-  geom_bar(stat = "identity", fill = "brown",colour= "orange")
+  geom_bar(stat = "identity", fill = "yellow",colour= "orange")
 ```
 
 ### Ejercicio 7 (25%)
